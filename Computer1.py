@@ -9,23 +9,18 @@ def print_name():
     return str(__name__)
 
 def last_multiplied_handler():
-    """
-    Write this function.
-    Inputs : None
-    Outputs: The last multiplied result
-    This is the last 5 multiplied questions/answers
-    """
-    pass
+    print list(last_five_questions)
+    return list(last_five_questions)
 
 
 def multiply_handler(x, y):
-    key = str(x)+"*"+str(y)
+    key = [x,y]
     if key in CACHE:
-        last_five_questions.append([key, CACHE[key]])
+        last_five_questions.appendleft([CACHE[key], key])
         return CACHE[key]
 
     answer = RussianPeasantsAlgorithm.russian_peasant_rec(x, y)
-    last_five_questions.append([key, answer])
+    last_five_questions.append([answer, key])
     CACHE[key] = answer
     return answer
 
