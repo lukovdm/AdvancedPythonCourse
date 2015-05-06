@@ -9,12 +9,11 @@ def print_name():
     return str(__name__)
 
 def last_multiplied_handler():
-    print list(last_five_questions)
     return list(last_five_questions)
 
 
 def multiply_handler(x, y):
-    key = [x,y]
+    key = (x, y)
     if key in CACHE:
         last_five_questions.appendleft([CACHE[key], key])
         return CACHE[key]
